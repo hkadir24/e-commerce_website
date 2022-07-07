@@ -1,0 +1,20 @@
+<?php
+include "config.php"; 
+?>
+<form action="choose_FPs.php" method="GET">
+<select name="ids">
+<?php
+$sql_command =
+"SELECT fp_id, fp_name, fp_stock, fp_cost FROM final_products"; 
+$myresult = mysqli_query($db, $sql_command); 
+while($id_rows = mysqli_fetch_assoc($myresult)) { 
+$fp_id = $id_rows['fp_id']; 
+$fp_name = $id_rows['fp_name']; 
+$fp_stock = $id_rows['fp_stock']; 
+$fp_cost = $id_rows['fp_cost']; 
+echo "<option value=$fp_id>". $fp_name . " - " . $fp_stock . $fp_cost "</option>"; 
+} 
+?>
+</select>
+<button>SELECT</button>
+</form>
